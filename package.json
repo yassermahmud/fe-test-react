@@ -25,8 +25,11 @@
     "eslint": "^3.12.2",
     "eslint-config-standard-react": "^4.2.0",
     "eslint-loader": "^1.6.1",
+    "json-loader": "^0.5.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "standard": "^8.6.0"
+    "react-router": "^3.0.0",
+    "standard": "^8.6.0",
+    "webpack": "^1.14.0"
   }
 }

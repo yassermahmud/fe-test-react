@@ -1,15 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router'
 
-const App = () => {
+const Landing = () => {
   return (
     <div className='app-container'>
       <div className='home-info'>
         <h1 className='title'>svideo</h1>
         <input className='search' type='text' placeholder='Search' />
-        <button className='search-all'>or Search All</button>
+        <Link to='/search' className='search-all'>or Search All</Link>
       </div>
     </div>
   )
 }
 
-module.exports = App
+module.exports = Landing
