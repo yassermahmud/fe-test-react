@@ -26439,11 +26439,19 @@
 
 	'use strict';
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	// in order to import a json file, can do as below or via webpack loader
+
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _data = __webpack_require__(235);
+	var _ShowCard = __webpack_require__(235);
+
+	var _ShowCard2 = _interopRequireDefault(_ShowCard);
+
+	var _data = __webpack_require__(236);
 
 	var _data2 = _interopRequireDefault(_data);
 
@@ -26451,22 +26459,83 @@
 
 	var Search = function Search() {
 	  return _react2.default.createElement(
-	    'pre',
-	    null,
+	    'div',
+	    { className: 'container' },
 	    _react2.default.createElement(
-	      'code',
-	      null,
-	      JSON.stringify(_data2.default, null, 2)
+	      'div',
+	      { className: 'shows' },
+	      _data2.default.shows.map(function (show) {
+	        return _react2.default.createElement(_ShowCard2.default, _extends({}, show, { key: show.imdbID }));
+	      })
 	    )
 	  );
 	};
-	// in order to import a json file, can do as below or via webpack loader
-
 
 	module.exports = Search;
+	// {...show} means ...show in javascript which is illegal as it needs to be in {} bracket (as per ES7)
+	// so seems this is not really the ES7 spread operator as ES7 babel-loader is not reqd for this.
+	// This is a react thing (called JSX spread operator) where you think it produces title: my-title, but in
+	// reality it produces title='my-title' under the hood to the props object.
 
 /***/ },
 /* 235 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ShowCard = function ShowCard(_ref) {
+	  var poster = _ref.poster,
+	      title = _ref.title,
+	      year = _ref.year,
+	      description = _ref.description;
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'show-card' },
+	    _react2.default.createElement('img', { src: './public/posters/' + poster, className: 'show-card-img' }),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'show-card-text' },
+	      _react2.default.createElement(
+	        'h3',
+	        { className: 'show-card-title' },
+	        title
+	      ),
+	      _react2.default.createElement(
+	        'h4',
+	        { className: 'show-card-year' },
+	        '(',
+	        year,
+	        ')'
+	      ),
+	      _react2.default.createElement(
+	        'p',
+	        { className: 'show-card-description' },
+	        description
+	      )
+	    )
+	  );
+	};
+
+	var string = _react2.default.PropTypes.string;
+
+
+	ShowCard.propTypes = {
+	  poster: string.isRequired,
+	  title: string.isRequired,
+	  year: string.isRequired,
+	  description: string.isRequired
+	};
+
+	module.exports = ShowCard;
+
+/***/ },
+/* 236 */
 /***/ function(module, exports) {
 
 	module.exports = {
