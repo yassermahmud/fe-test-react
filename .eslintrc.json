@@ -1,0 +1,5 @@
+// require standard, eslint, eslint-config-standard-react
+// for webpack require eslint-loader
+{
+  "extends": ["standard", "standard-react"]
+}
