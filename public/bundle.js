@@ -60,6 +60,10 @@
 
 	var _Landing2 = _interopRequireDefault(_Landing);
 
+	var _Layout = __webpack_require__(237);
+
+	var _Layout2 = _interopRequireDefault(_Layout);
+
 	var _Search = __webpack_require__(234);
 
 	var _Search2 = _interopRequireDefault(_Search);
@@ -70,8 +74,12 @@
 	  return _react2.default.createElement(
 	    _reactRouter.Router,
 	    { history: _reactRouter.hashHistory },
-	    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Landing2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: '/search', component: _Search2.default })
+	    _react2.default.createElement(
+	      _reactRouter.Route,
+	      { path: '/', component: _Layout2.default },
+	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Landing2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/search', component: _Search2.default })
+	    )
 	  );
 	};
 
@@ -26412,7 +26420,7 @@
 	var Landing = function Landing() {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'app-container' },
+	    { className: 'landing-container' },
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'home-info' },
@@ -26460,7 +26468,17 @@
 	var Search = function Search() {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'container' },
+	    { className: 'search-container' },
+	    _react2.default.createElement(
+	      'header',
+	      { className: 'header' },
+	      _react2.default.createElement(
+	        'h1',
+	        { className: 'brand' },
+	        'svideo'
+	      ),
+	      _react2.default.createElement('input', { type: 'text', className: 'search-input', placeholder: 'search' })
+	    ),
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'shows' },
@@ -26710,6 +26728,35 @@
 			}
 		]
 	};
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Layout = function Layout(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'app-container' },
+	    props.children
+	  );
+	};
+
+	var element = _react2.default.PropTypes.element;
+
+
+	Layout.propTypes = {
+	  children: element.isRequired
+	};
+
+	module.exports = Layout;
 
 /***/ }
 /******/ ]);

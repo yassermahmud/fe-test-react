@@ -7,14 +7,17 @@ html {
 }
 
 .app-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 97vh;
   padding: 0% 5% 0% 0%;
   background-image: url('./restaurant-banner.jpg');
   background-position: center;
   background-size: cover;
+}
+
+.landing-container {
+  height: 97vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-info {
@@ -54,8 +57,12 @@ html {
   background-color: #666;
 }
 
-.container {
-  background-color: rgba(220, 220, 220, .8);
+.search-container {
+  top:40px;
+  width: 97vw;
+  margin: auto;
+  position: relative;
+  background-color: rgba(220, 220, 220, .4);
   border-radius: 5px;
 }
 
@@ -93,4 +100,35 @@ html {
 .show-card-description {
   font-size: 10px;
   margin-bottom: 0px;
+}
+
+.brand {
+  font-family: Skia;
+  font-weight: normal;
+  color: #B10DC9;
+  margin: 0;
+}
+
+.header {
+  /*z-index: 10;*/
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  top: 0;
+  left: 0;
+  width: 95%;
+  overflow: hidden;
+  background-color: #fafafa;
+  padding: 8px 30px;
+}
+
+.search-input {
+  min-width: 200px;
+  max-width: 300px;
+  width: 33%;
+  padding: 4px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
 }

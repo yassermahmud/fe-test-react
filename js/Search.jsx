@@ -4,7 +4,11 @@ import ShowCard from './ShowCard'
 import data from 'json!../public/data.json'
 
 const Search = () => (
-  <div className='container'>
+  <div className='search-container'>
+    <header className='header'>
+      <h1 className='brand'>svideo</h1>
+      <input type='text' className='search-input' placeholder='search' />
+    </header>
     <div className='shows'>
       {data.shows.map((show) => (
         <ShowCard {...show} key={show.imdbID} />
