@@ -60,11 +60,11 @@
 
 	var _Landing2 = _interopRequireDefault(_Landing);
 
-	var _Layout = __webpack_require__(237);
+	var _Layout = __webpack_require__(234);
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _Search = __webpack_require__(234);
+	var _Search = __webpack_require__(235);
 
 	var _Search2 = _interopRequireDefault(_Search);
 
@@ -26447,47 +26447,117 @@
 
 	'use strict';
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	// in order to import a json file, can do as below or via webpack loader
+	var _react = __webpack_require__(1);
 
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Layout = function Layout(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'app-container' },
+	    props.children
+	  );
+	};
+
+	var element = _react2.default.PropTypes.element;
+
+
+	Layout.propTypes = {
+	  children: element.isRequired
+	};
+
+	module.exports = Layout;
+
+/***/ },
+/* 235 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ShowCard = __webpack_require__(235);
+	var _ShowCard = __webpack_require__(236);
 
 	var _ShowCard2 = _interopRequireDefault(_ShowCard);
 
-	var _data = __webpack_require__(236);
+	var _data = __webpack_require__(237);
 
 	var _data2 = _interopRequireDefault(_data);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Search = function Search() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'search-container' },
-	    _react2.default.createElement(
-	      'header',
-	      { className: 'header' },
-	      _react2.default.createElement(
-	        'h1',
-	        { className: 'brand' },
-	        'svideo'
-	      ),
-	      _react2.default.createElement('input', { type: 'text', className: 'search-input', placeholder: 'search' })
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'shows' },
-	      _data2.default.shows.map(function (show) {
-	        return _react2.default.createElement(_ShowCard2.default, _extends({}, show, { key: show.imdbID }));
-	      })
-	    )
-	  );
-	};
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	// in order to import a json file, can do as below or via webpack loader
+	// import data from 'json!../public/data.json'
+
+
+	var Search = function (_React$Component) {
+	  _inherits(Search, _React$Component);
+
+	  function Search() {
+	    _classCallCheck(this, Search);
+
+	    var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+
+	    _this.state = {
+	      searchTerm: ''
+	    };
+	    _this.searchTermEvent = _this.searchTermEvent.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(Search, [{
+	    key: 'searchTermEvent',
+	    value: function searchTermEvent(e) {
+	      this.setState({
+	        searchTerm: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'search-container' },
+	        _react2.default.createElement(
+	          'header',
+	          { className: 'header' },
+	          _react2.default.createElement(
+	            'h1',
+	            { className: 'brand' },
+	            'svideo'
+	          ),
+	          _react2.default.createElement('input', { type: 'text', value: this.state.searchTerm, className: 'search-input', placeholder: 'search', onChange: this.searchTermEvent })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'shows' },
+	          _data2.default.shows.filter(function (show) {
+	            return (show.title + ' ' + show.description).toUpperCase().indexOf(_this2.state.searchTerm.toUpperCase()) >= 0;
+	          }).map(function (show) {
+	            return _react2.default.createElement(_ShowCard2.default, _extends({}, show, { key: show.imdbID }));
+	          })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Search;
+	}(_react2.default.Component);
 
 	module.exports = Search;
 	// {...show} means ...show in javascript which is illegal as it needs to be in {} bracket (as per ES7)
@@ -26496,7 +26566,7 @@
 	// reality it produces title='my-title' under the hood to the props object.
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26553,7 +26623,7 @@
 	module.exports = ShowCard;
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -26728,35 +26798,6 @@
 			}
 		]
 	};
-
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Layout = function Layout(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'app-container' },
-	    props.children
-	  );
-	};
-
-	var element = _react2.default.PropTypes.element;
-
-
-	Layout.propTypes = {
-	  children: element.isRequired
-	};
-
-	module.exports = Layout;
 
 /***/ }
 /******/ ]);

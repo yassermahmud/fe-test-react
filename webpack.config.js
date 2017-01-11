@@ -29,6 +29,11 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      //json loader as seems !json doesnt work with enzyme shallow rendering.
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },
